@@ -9,6 +9,11 @@ app.use(cors());
 // Permet l'accès aux variables d'environnement
 require("dotenv").config();
 
+// Home
+app.get("/", (req, res) => {
+  res.json("Welcome on my Marvel API =)");
+});
+
 // GET All characters
 app.get("/characters/all", async (req, res) => {
   try {
