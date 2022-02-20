@@ -3,13 +3,11 @@ const formidable = require("express-formidable");
 const cors = require("cors");
 const axios = require("axios");
 const app = express();
-const dotenv = require("dotenv"); // test
 app.use(formidable());
 app.use(cors());
 
 // Permet l'accès aux variables d'environnement
 require("dotenv").config();
-dotenv.config({ path: "./.env" }); // test
 
 // GET All characters
 app.get("/characters/all", async (req, res) => {
