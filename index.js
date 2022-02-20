@@ -60,7 +60,11 @@ app.use(function (err, req, res, next) {
   res.json({ error: err.message });
 });
 
-const server = app.listen(process.env.PORT, () => {
+app.listen(process.env.PORT, () => {
   console.log("Server started");
 });
-server.timeout = Number(process.env.SERVER_TIMEOUT) || 1000000;
+
+// const server = app.listen(process.env.PORT, () => {
+//   console.log("Server started");
+// });
+// server.timeout = Number(process.env.SERVER_TIMEOUT) || 1000000;
