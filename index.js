@@ -11,15 +11,19 @@ require("dotenv").config();
 
 // GET All characters
 app.get("/characters/all", async (req, res) => {
-  const limit = req.query.limit;
-  const skip = req.query.skip;
-  const name = req.query.name ? `&name=${encodeURI(req.query.name)}` : "";
+  try {
+    const limit = req.query.limit;
+    const skip = req.query.skip;
+    const name = req.query.name ? `&name=${encodeURI(req.query.name)}` : "";
 
-  const characters = await axios.get(
-    `https://lereacteur-marvel-api.herokuapp.com/characters?apiKey=${process.env.API_KEY}&limit=${limit}&skip=${skip}${name}`
-  );
-  //   console.log(characters.data);
-  res.json(characters.data);
+    const characters = await axios.get(
+      `https://lereacteur-marvel-api.herokuapp.com/characters?apiKey=${process.env.API_KEY}&limit=${limit}&skip=${skip}${name}`
+    );
+    console.log(characters.data);
+    res.json(characters.data);
+  } catch (error) {
+    res.json(error.message);
+  }
 });
 
 // GET a character by his id
